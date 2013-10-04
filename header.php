@@ -16,8 +16,8 @@
 
 		<img src="img/cabecalho.png" alt="Mural de Recados" />
 	<div id="menu">
-		<a class="btn btn-info" href="/forum/index.php">Painel de Recados</a>
-		<a class="btn btn-success" href="/forum/create_topic.php">Escrever Recado</a>
+		<a class="btn btn-info" href="index.php">Painel de Recados</a>
+		<a class="btn btn-success" href="create_topic.php">Escrever Recado</a>
 
 		<?php 
 				if(isset($_SESSION['signed_in']))
@@ -26,7 +26,7 @@
 					if($_SESSION['user_level'] == 1)
 						{
 							//the user is not an admin
-							echo '<a class="btn btn-success" href="/forum/create_cat.php">Cadastrar Turma</a>';
+							echo '<a class="btn btn-success" href="create_cat.php">Cadastrar Turma</a>';
 						}
 				}
 
