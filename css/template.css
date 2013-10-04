@@ -1,0 +1,32 @@
+#topo{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.hero-unit{
+	background-color: #414141;
+	color: #fff;
+}
+.hero-unit .btn{
+	color: #fff;
+	background-color: #d8450b;
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f86), to(#d8450b));
+	border: 0px;
+	text-shadow: 0 0px 0px #000;
+}
+.hero-unit .btn:hover{	
+	background-color: #e37b52;
+}
+.flutuar{
+	float: left;
+	margin-bottom: 10px;
+	margin-right: 10px;
+}
+.media-list .pull-left
+{
+	color: #000;
+	text-decoration: none;
+}
+.flutuar-right{
+	float: right;
+}
