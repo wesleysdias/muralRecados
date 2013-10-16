@@ -80,8 +80,9 @@ else
 							echo '<a href="topic.php?id=' . $topicrow['topic_id'] . '">' . $topicrow['topic_subject'] . '</a> no Dia: ' . date('d-m-Y', strtotime($topicrow['topic_date']));
 						}
 					}
-				echo '</td>';
-			echo '</tr>';
+					echo '</td>';
+				echo '</tr>';
+			echo '</table>';
 		}
 	}
 }

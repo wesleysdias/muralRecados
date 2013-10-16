@@ -3,11 +3,11 @@
 include 'connect.php';
 include 'header.php';
 
-echo '<h2>Enviar Recado</h2>';
+echo '<h3>Enviar Recado</h3><br />';
 if(isset($_SESSION['signed_in']) == false)
 {
 	//usuario nao esta logado...
-	echo 'Para enviar um recado acesse o sistema <a href="/forum/signin.php">Clique aqui</a>.';
+	echo 'Para enviar um recado acesse o sistema <a href="signin.php">Clique aqui</a>.';
 }
 else
 {
@@ -27,7 +27,7 @@ else
 		
 		if(!$result)
 		{
-			//the query failed, uh-oh :-(
+			//erro banco, uh-oh :-(
 			echo 'Erro ao selecionar o Banco de Dados, tente novamente.';
 		}
 		else
@@ -47,23 +47,40 @@ else
 			else
 			{
 		
-				echo '<form method="post" action="">
-					Assunto: <input type="text" name="topic_subject" /><br />
-					Turma:'; 
+				echo '<form class="form-horizontal" method="post" action="">
+								    		<div class="control-group">
+								    			<label class="control-label">Assunto: </label> 
+											 		<div class="controls">
+											 			<input class="span5" type="text" name="topic_subject" />
+											 		</div>
+										    </div>'; 
 				
-				echo '<select name="topic_cat">';
+				echo ' <div class="control-group">
+						<label class="control-label">Turma: </label>
+								  <div class="controls">						
+								<select name="topic_cat">';
 					while($row = mysql_fetch_assoc($result))
 					{
 						echo '<option value="' . $row['cat_id'] . '">' . $row['cat_name'] . '</option>';
 					}
-				echo '</select><br />';	
+				echo '</select>
+						</div>
+						</div>';	
+				
 					
-				echo 'Recado: <br /><textarea name="post_content" /></textarea><br /><br />
-					<input type="submit" value="Enviar Recado" />
+				echo '<div class="control-group">
+						<label class="control-label">Recado: </label>
+						<div class="controls">		
+						<textarea name="post_content" /></textarea><br /><br />
+					<input class="btn" type="submit" value="Enviar Recado" />
+					</div>
+					</div>				
 				 </form>';
 			}
 		}
 	}
+	
+	
 	else
 	{
 		//começo da transação
@@ -74,6 +91,7 @@ else
 		{
 			//Damn! falha na consulta
 			echo 'Erro ao enviar o recado. Por favor, tente mais tarde.';
+			
 		}
 		else
 		{

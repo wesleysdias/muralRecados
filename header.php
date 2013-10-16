@@ -32,7 +32,7 @@
 
 		 ?>
 		
-		<div id="userbar">
+		<div id="userbar" class="text-right">
 		<?php
 		if(isset($_SESSION['signed_in']))
 		{
