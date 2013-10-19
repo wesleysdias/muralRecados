@@ -15,6 +15,7 @@
 	<div id="wrapper">					
 
 		<img src="img/cabecalho.png" alt="Mural de Recados" />
+		<h1 style="">Mural de Recados BSI</h1>
 	<div id="menu">
 		<a class="btn btn-info" href="index.php">Painel de Recados</a>
 		<a class="btn btn-success" href="create_topic.php">Escrever Recado</a>

@@ -1,7 +1,7 @@
 /* BEGIN BASIC FORUM STYLES */
 body {
 	
-	background-color: #004D12;
+	background-color: rgba(32, 66, 40, 0.95);
 	/*background: url(img/body_bg.gif) repeat left top;*/
 	text-align: center;			/* make sure IE centers the page too */
 }
@@ -11,6 +11,25 @@ body {
 	width: 900px;
 	margin: 0 auto; 			/* center the page */
 }
+
+#wrapper img{
+	float: left;
+}
+#wrapper h1{
+	font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	float: right;
+	padding-top: 50px;
+	padding-right:30px;
+	font-size:45px;
+	color: rgba(0, 0, 0, 0.58);
+	text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.205);
+	
+}
+
+#wrapper h1:hover{
+	text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.905);
+}
+
 
 #content {	
 	background-color: #fff;	
