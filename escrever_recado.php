@@ -7,7 +7,7 @@ echo '<h3>Enviar Recado</h3><br />';
 if(isset($_SESSION['signed_in']) == false)
 {
 	//usuario nao esta logado...
-	echo 'Para enviar um recado acesse o sistema <a href="signin.php">Clique aqui</a>.';
+	echo 'Para enviar um recado acesse o sistema <a href="entrar.php">Clique aqui</a>.';
 }
 else
 {
@@ -47,7 +47,7 @@ else
 			else
 			{
 		
-				echo '<form class="form-horizontal" method="post" action="">
+				echo '<form name="form" onsubmit="return valida(this);" class="form-horizontal" method="post" action="">
 								    		<div class="control-group">
 								    			<label class="control-label">Assunto: </label> 
 											 		<div class="controls">
@@ -76,13 +76,36 @@ else
 					</div>
 					</div>				
 				 </form>';
-			}
+			}		
+		
 		}
 	}
 	
 	
 	else
 	{
+		 /* Validação	*/
+		 
+			$errors = array(); /* array para erros */
+			
+			if(isset($_POST['topic_subject']))
+			{
+				//the user name exists
+				if($_POST['topic_subject']=="")
+				{
+					$errors[] = 'O Assunto não pode ser vazio.';
+				}
+				if(strlen($_POST['topic_subject']) > 30)
+				{
+					$errors[] = 'O Assunto deve ser menor que 30 caracteres.';
+				}
+				if($_POST['post_content']=="")
+				{
+					$errors[] = 'O Recado não pode ser vazio.';
+				}
+			}
+			
+				
 		//começo da transação
 		$query  = "BEGIN WORK;";
 		$result = mysql_query($query);
@@ -93,8 +116,20 @@ else
 			echo 'Erro ao enviar o recado. Por favor, tente mais tarde.';
 			
 		}
+		if(!empty($errors)) /*verifica se o array esta vazio, se existe erros eles estao aqui*/
+		{
+			echo 'Alguns erros foram encontrados..<br /><br />';
+			echo '<ul>';
+			foreach($errors as $key => $value) /* ande pelo array e exiba caso tenha erros */
+			{
+				echo '<li>' . $value . '</li>'; /* gera lista de erros */
+			}
+			echo '</ul>';
+			echo '<input type="button" class="btn btn-mini" value="Voltar" onClick="JavaScript: window.history.back();">';
+		}
 		else
 		{
+			
 	
 			//o form foi postado, salve!
 			//insira o recado primeiro na tabela, depois salveremos na tabela post
@@ -149,11 +184,13 @@ else
 					$result = mysql_query($sql);
 					
 					//recado enviado com secesso!
-					echo '<a href="topic.php?id='. $topicid . '">Recado</a> enviado com sucesso!';
+					echo '<a href="recado.php?id='. $topicid . '">Recado</a> enviado com sucesso!';
 				}
 			}
 		}
+		
 	}
+	
 }
 
 include 'footer.php';

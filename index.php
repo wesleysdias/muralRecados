@@ -32,7 +32,7 @@ else
 	else
 	{
 		//prepare the table
-		echo '<table border="1">
+		echo '<table border="2">
 			  <tr>
 				<th>Mural de Recados</th>
 				<th>Último recado enviado</th>
@@ -42,7 +42,7 @@ else
 		{				
 			echo '<tr>';
 				echo '<td class="leftpart">';
-					echo '<h3><a href="category.php?id=' . $row['cat_id'] . '">' . $row['cat_name'] . '</a></h3>' . $row['cat_description'];
+					echo '<h3><a href="turma.php?id=' . $row['cat_id'] . '">' . $row['cat_name'] . '</a></h3>' . $row['cat_description'];
 				echo '</td>';
 				echo '<td class="rightpart">';
 				
@@ -77,13 +77,14 @@ else
 						else
 						{
 							while($topicrow = mysql_fetch_assoc($topicsresult))
-							echo '<a href="topic.php?id=' . $topicrow['topic_id'] . '">' . $topicrow['topic_subject'] . '</a> no Dia: ' . date('d-m-Y', strtotime($topicrow['topic_date']));
+							echo '<a href="recado.php?id=' . $topicrow['topic_id'] . '">' . $topicrow['topic_subject'] . '</a> no Dia: ' . date('d-m-Y', strtotime($topicrow['topic_date']));
 						}
 					}
 					echo '</td>';
 				echo '</tr>';
-			echo '</table>';
+			
 		}
+		echo '</table>';
 	}
 }
 

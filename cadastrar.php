@@ -46,12 +46,8 @@ if($_SERVER['REQUEST_METHOD'] != 'POST')
 }
 else
 {
-    /* so, the form has been posted, we'll process the data in three steps:
-		1.	Check the data
-		2.	Let the user refill the wrong fields (if necessary)
-		3.	Save the data 
-	*/
-	$errors = array(); /* declare the array for later use */
+    /* Validação	*/
+	$errors = array(); /* array para erros */
 	
 	if(isset($_POST['user_name']))
 	{
@@ -77,19 +73,23 @@ else
 		{
 			$errors[] = 'Senhas diferentes.';
 		}
+		if($_POST['user_pass'] == "")
+		{
+			$errors[] = 'O campo Senha não pode ser vazio.';
+		}
 	}
 	else
 	{
 		$errors[] = 'O campo Senha não pode ser vazio';
 	}
 	
-	if(!empty($errors)) /*check for an empty array, if there are errors, they're in this array (note the ! operator)*/
+	if(!empty($errors)) /*verifica se o array esta vazio, se existe erros eles estao aqui*/
 	{
-		echo 'Uh-oh.. alguns erros foram encontrados..<br /><br />';
+		echo 'Alguns erros foram encontrados..<br /><br />';
 		echo '<ul>';
-		foreach($errors as $key => $value) /* walk through the array so all the errors get displayed */
+		foreach($errors as $key => $value) /* ande pelo array e exiba caso tenha erros */
 		{
-			echo '<li>' . $value . '</li>'; /* this generates a nice error list */
+			echo '<li>' . $value . '</li>'; /* gera lista de erros */
 		}
 		echo '</ul>';
 	}
@@ -115,7 +115,7 @@ else
 		}
 		else
 		{
-			echo 'Conta criada com Sucesso. Agora você pode <a href="signin.php">Entrar</a> e enviar/responder os recados! :-)';
+			echo 'Conta criada com Sucesso. Agora você pode <a href="entrar.php">Entrar</a> e enviar/responder os recados! :-)';
 		}
 	}
 }
