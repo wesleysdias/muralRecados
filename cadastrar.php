@@ -92,6 +92,7 @@ else
 			echo '<li>' . $value . '</li>'; /* gera lista de erros */
 		}
 		echo '</ul>';
+		echo '<input type="button" class="btn btn-mini" value="Voltar" onClick="JavaScript: window.history.back();">';
 	}
 	else
 	{

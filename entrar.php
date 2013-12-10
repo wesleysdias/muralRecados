@@ -58,13 +58,14 @@ else
 		
 		if(!empty($errors)) /*check for an empty array, if there are errors, they're in this array (note the ! operator)*/
 		{
-			echo 'Uh-oh.. Alguns erros forma encontrados..<br /><br />';
+			echo 'Alguns erros forma encontrados..<br /><br />';
 			echo '<ul>';
 			foreach($errors as $key => $value) /* ande pelo array de erros  */
 			{
 				echo '<li>' . $value . '</li>'; /* exiba o erro de forma elegante */
 			}
 			echo '</ul>';
+			
 		}
 		else
 		{
